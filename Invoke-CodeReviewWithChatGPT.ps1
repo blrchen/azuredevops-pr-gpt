@@ -241,7 +241,6 @@ foreach ($entry in $change.changeEntries) {
     if ($null -ne $content -and $content.Length -gt 0) {
         $chat = Invoke-ChartGPTCompletion -AccountName $ChartGPTAccountName -AccessKey $ChartGPTAccessKey -DeploymentName $ChartGPTDeploymentName -Prompt "This is a git diff patch file content, please help review the code change." -Message $content
         $suggestion = $chat.choices[0].message.content
-        write-Host "diff: $content"
 
         if ($null -ne $suggestion) {
             $comment = [PSCustomObject]@{
